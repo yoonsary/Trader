@@ -1,0 +1,73 @@
+{{>layout/header}}
+<div class="wrapper">
+    <main class="container mt-5">
+        <div class="text-center mb-5">
+            <h1 class="fw-bold">마이 페이지</h1>
+            <hr class="w-25 mx-auto">
+        </div>
+
+        <section class="mb-5">
+            <h2 class="mb-3">💰 마일리지</h2>
+            <div class="d-flex align-items-center mb-3">
+                <p class="mb-0 me-3 fs-5">마일리지 보유량: <strong>{{user.balance}} P</strong></p>
+                <a class="btn btn-success me-2" href="/charge">충전하기</a>
+                <a class="btn btn-success" href="/change">환전하기</a>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="mb-4">🎒 내 아이템</h2>
+            <div class="row g-4">
+                <!-- 아이템 추가 카드 -->
+                <div class="col-md-4">
+                    <a href="/item/create" class="text-decoration-none text-dark">
+                        <div class="card h-100 shadow-sm border-dashed text-center bg-light">
+                            <div class="card-body d-flex flex-column justify-content-center">
+                                <h5 class="card-title">+ 아이템 추가</h5>
+                                <p class="card-text text-muted">새로운 아이템을 등록하세요</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- 아이템 목록 -->
+                {{#itemList}}
+                    <div class="col-md-4">
+                        <a href="/item/{{id}}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{name}}</h5>
+                                    <p class="card-text fw-bold text-primary">가격: {{price}} P</p>
+                                    <p class="card-text text-muted">판매자: {{seller}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {{/itemList}}
+            </div>
+        </section>
+        <section class="mt-5">
+            <h2 class="mb-4">🛒 구매한 아이템</h2>
+            <div class="row g-4">
+                {{#purchasedList}}
+                    <div class="col-md-4">
+                        <a href="/item/{{id}}" class="text-decoration-none text-dark">
+                            <div class="card h-100 shadow-sm border-success">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{name}}</h5>
+                                    <p class="card-text fw-bold text-primary">가격: {{price}} P</p>
+                                    <p class="card-text text-muted">판매자: {{seller}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {{/purchasedList}}
+
+                {{^purchasedList}}
+                    <p class="text-muted">구매한 아이템이 없습니다.</p>
+                {{/purchasedList}}
+            </div>
+        </section>
+    </main>
+    {{>layout/footer}}
+</div>
