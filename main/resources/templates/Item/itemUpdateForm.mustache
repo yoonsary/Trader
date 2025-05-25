@@ -1,0 +1,36 @@
+{{>layout/header}}
+<div class="wrapper">
+    <main>
+        <div class="container mt-5">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">아이템 수정</h2>
+                <hr class="w-25 mx-auto">
+            </div>
+            {{#item}}
+                <form action="/item/update" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">상품명</label>
+                        <input type="text" class="form-control" name="name" value="{{name}}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">설명</label>
+                        <textarea class="form-control" name="description">{{description}}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">가격</label>
+                        <input type="number" class="form-control" name="price" value="{{price}}" min="0" max="2147483647">
+                    </div>
+
+                    <input type="hidden" name="id" value="{{id}}"/>
+                    <input type="hidden" name="seller" value="{{seller}}"/>
+                    <input type="hidden" name="seller_id" value="{{sellerId}}"/>
+                    <input type="hidden" name="created_date" value="{{created_date}}" />
+                    <input type="hidden" name="onsale" value="{{onsale}}"/>
+
+                    <button type="submit" class="btn btn-primary">제출</button>
+                </form>
+            {{/item}}
+        </div>
+    </main>
+    {{>layout/footer}}
+</div>

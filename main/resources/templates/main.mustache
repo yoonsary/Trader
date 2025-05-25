@@ -1,0 +1,122 @@
+{{>layout/header}}
+<style>
+    .hero {
+        background: linear-gradient(135deg, #007bff, #00c6ff);
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+    }
+    .hero .cta-button {
+        background: #fff;
+        color: #007bff;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    .hero .cta-button:hover {
+        background: #f1f1f1;
+    }
+    .announcements {
+        max-width: 860px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        color: #555;
+    }
+    .announcements h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #007bff;
+    }
+    .announcements ul {
+        list-style: disc inside;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    .features {
+        margin: 20px auto;
+        padding: 20px;
+        max-width: 900px;
+        text-align: center;
+    }
+    .features h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    .features-grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    .feature-item {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        flex: 1;
+        text-align: center;
+    }
+    .feature-item h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #333;
+    }
+    .feature-item p {
+        font-size: 0.95rem;
+        color: #555;
+    }
+</style>
+<div class="wrapper">
+    <main>
+        <section class="hero">
+            <h1>쉽고 빠른 마일리지 거래</h1>
+            <p>보유한 마일리지를 원하는 사람과 자유롭게 거래하세요.</p>
+            {{#user}}
+                <a href="/display-case" class="cta-button">지금 시작하기</a>
+            {{/user}}
+            {{^user}}
+                <a href="/login" class="cta-button">지금 시작하기</a>
+            {{/user}}
+        </section>
+
+        <section class="announcements">
+            <h2>📢 공지사항 & 이벤트</h2>
+            <ul>
+                <li>2025-05-01 ~ 2025-06-01: 신규 회원 대상 마일리지 1,000P 증정 이벤트!</li>
+                <li>2025-05-01 ~ 2025-06-01: 마일리지 출금 수수료 무료 프로모션 진행중</li>
+                <li>2025-05-20: 안전 거래 캠페인 안내 및 보안 강화 조치</li>
+            </ul>
+        </section>
+
+        <section class="features">
+            <h2>우리가 제공하는 기능</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h3>충전 & 출금</h3>
+                    <p>원하는 만큼 자유롭게 마일리지를 관리하세요.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>간편 거래</h3>
+                    <p>구매/판매를 몇 번의 클릭으로 완료할 수 있어요.</p>
+                </div>
+                <div class="feature-item">
+                    <h3>안전한 보안</h3>
+                    <p>이중 인증과 데이터 암호화로 안전하게 거래하세요.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    {{>layout/footer}}
+</div>

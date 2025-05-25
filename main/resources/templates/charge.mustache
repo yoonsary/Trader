@@ -1,0 +1,68 @@
+{{> layout/header2 }}
+
+<main class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-md-6 col-lg-5">
+        <div class="card-style">
+            <h2 class="text-center mb-4 text-primary">💳 마일리지 충전</h2>
+
+            <form action="/charge" method="post">
+                <div class="mb-3">
+                    <label for="amount" class="form-label">충전 금액 (₩)</label>
+                    <input type="number" name="amount" id="amount" class="form-control" min="1" max="2147483647" required>
+                </div>
+                <hr>
+                <div class="mb-3">
+                    <label for="cardNumber1" class="form-label">카드 번호</label>
+                    <div class="d-flex gap-2">
+                        <input type="text" id="cardNumber1" class="form-control" maxlength="4" pattern="\d{4}" inputmode="numeric" required>
+                        <input type="text" id="cardNumber2" class="form-control" maxlength="4" pattern="\d{4}" inputmode="numeric" required>
+                        <input type="password" id="cardNumber3" class="form-control" maxlength="4" pattern="\d{4}" inputmode="numeric" required>
+                        <input type="password" id="cardNumber4" class="form-control" maxlength="4" pattern="\d{4}" inputmode="numeric" required>
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label class="form-label">유효기간</label>
+                        <input type="text" class="form-control" placeholder="MM/YY" maxlength="4" required>
+                    </div>
+                    <div class="col">
+                        <label class="form-label">CVC</label>
+                        <input type="text" class="form-control" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">비밀번호 앞 두 자리</label>
+                    <input type="password" class="form-control" maxlength="2" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">충전하기</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="/seller/mypage" class="text-decoration-none text-secondary">← 마이페이지로 돌아가기</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    const inputs = [
+      document.getElementById('cardNumber1'),
+      document.getElementById('cardNumber2'),
+      document.getElementById('cardNumber3'),
+      document.getElementById('cardNumber4')
+    ];
+
+    inputs.forEach((input, idx) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 4 && idx < inputs.length - 1) {
+          inputs[idx + 1].focus();
+        }
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && input.value.length === 0 && idx > 0) {
+          inputs[idx - 1].focus();
+        }
+      });
+    });
+</script>

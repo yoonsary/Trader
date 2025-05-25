@@ -1,0 +1,61 @@
+{{> layout/header2 }}
+
+<main class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="col-md-6 col-lg-5">
+        <div class="card-style">
+            <h2 class="text-center mb-4 text-danger">💸 마일리지 환전</h2>
+
+            {{#success}}
+                <div class="alert alert-success text-center" role="alert">
+                    {{success}}
+                </div>
+            {{/success}}
+
+            {{#error}}
+                <div class="alert alert-danger text-center" role="alert">
+                    {{error}}
+                </div>
+            {{/error}}
+
+            <p class="mb-0 me-3 fs-5">마일리지 보유량: <strong>{{user.balance}} P</strong></p>
+
+            <form action="/change" method="post">
+                <div class="mb-3">
+                    <label for="amount" class="form-label">환전 금액 (P)</label>
+                    <input type="number" name="amount" id="amount" class="form-control" min="1" max="2147483647" required>
+                </div>
+
+                <div class="mb-3 d-flex gap-2">
+                    <div class="flex-grow-1">
+                        <label for="bank" class="form-label">은행</label>
+                        <select class="form-select" name="bank" id="bank" required>
+                            <option value="">은행 선택</option>
+                            <option value="KB국민은행">KB국민은행</option>
+                            <option value="신한은행">신한은행</option>
+                            <option value="우리은행">우리은행</option>
+                            <option value="하나은행">하나은행</option>
+                            <option value="IBK기업은행">IBK기업은행</option>
+                            <option value="NH농협은행">NH농협은행</option>
+                            <option value="카카오뱅크">카카오뱅크</option>
+                            <option value="토스뱅크">토스뱅크</option>
+                            <option value="케이뱅크">케이뱅크</option>
+                            <option value="SC제일은행">SC제일은행</option>
+                            <option value="씨티은행">씨티은행</option>
+                        </select>
+                    </div>
+
+                    <div class="flex-grow-1">
+                        <label for="accountNumber" class="form-label">계좌번호</label>
+                        <input type="text" name="accountNumber" id="accountNumber" class="form-control" maxlength="14" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-danger w-100">환전하기</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <a href="/seller/mypage" class="text-decoration-none text-secondary">← 마이페이지로 돌아가기</a>
+            </div>
+        </div>
+    </div>
+</main>
